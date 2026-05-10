@@ -860,8 +860,8 @@ ManglingError Remangler::mangleDifferentiableFunctionType(Node *node,
 
 ManglingError Remangler::mangleGlobalActorFunctionType(Node *node,
                                                        unsigned depth) {
-  Buffer << "Y" << (char)node->getIndex(); // differentiability kind
-  return ManglingError::Success;
+  Buffer << "Y";
+  return mangleChildNodes(node, depth + 1);
 }
 
 ManglingError Remangler::mangleIsolatedAnyFunctionType(Node *node,
